@@ -10,6 +10,13 @@ server.use("/api/posts", postRouter)
 
 server.get("/", (req, res) => {
   res.json({ message: "DB Helpers with Knex" })
+});
+
+server.use((error,req,res,next) => {
+   console.log(error);
+   res.status(500).json({
+      message: "Something went wrong",
+   })
 })
 
 server.listen(port, () => {
